@@ -5,7 +5,7 @@ const AboutUs = () => {
     <div style={styles.container}>
       <h1 style={styles.heading}>About Us</h1>
       <p style={styles.paragraph}>
-        We created Wainah because we saw a real need in our community for a reliable platform where lost and found items can be shared and reunited with their owners
+        Wainah is a digital social platform for lost & found items. We created Wainah because we saw a real need in our community for a reliable platform where lost and found items can be shared and reunited with their owners
       </p>
       <p style={styles.paragraph}>
         This is a social community initiative — a place where neighbors, friends, and strangers can come together to help each other out. 
@@ -38,7 +38,7 @@ const styles = {
       marginBottom: 20,
     },
     paragraph: {
-      fontSize: '1.25rem',
+      fontSize: '1.2rem',
       lineHeight: 1.6,
       marginBottom: 20,
     },

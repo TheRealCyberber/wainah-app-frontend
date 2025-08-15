@@ -6,7 +6,18 @@ import ItemLocationPicker from '../components/ItemLocationPicker'
 const NewItem = ({ user }) => {
   const navigate = useNavigate()
 
-  const initialState = {
+  const categories = [
+    'Electronics',
+    'Clothing',
+    'Bags',
+    'Keys',
+    'Documents',
+    'Jewelry',
+    'Pets',
+    'Other'
+  ]
+
+const initialState = {
     name: '',
     description: '',
     category: '',
@@ -19,14 +30,14 @@ const NewItem = ({ user }) => {
   const [location, setLocation] = useState(null) 
   const [error, setError] = useState('')
 
-  const handleChange = (e) => {
+     const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.id]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!location) {
+        if (!location) {
       setError('Please select a location on the map')
       return
     }
@@ -35,12 +46,12 @@ const NewItem = ({ user }) => {
       ...formValues,
       userId: user?._id,
       location: {
-        type: 'Point',
+             type: 'Point',
         coordinates: location
       }
     }
 
-    console.log('Creating item with payload:', payload)
+        console.log('Creating item with payload:', payload)
 
     try {
       await CreateItem(payload) 
@@ -48,7 +59,7 @@ const NewItem = ({ user }) => {
       setLocation(null)
       navigate('/dashboard')
     } catch (err) {
-      console.error('Item Creation Error:', err.response?.data?.msg || err.message)
+        console.error('Item Creation Error:', err.response?.data?.msg || err.message)
       setError(err.response?.data?.msg || 'Failed to create item.')
     }
   }
@@ -65,7 +76,7 @@ const NewItem = ({ user }) => {
             value={formValues.name}
             onChange={handleChange}
             required
-          />
+         />
         </div>
 
         <div className="input-wrapper">
@@ -75,23 +86,29 @@ const NewItem = ({ user }) => {
             value={formValues.description}
             onChange={handleChange}
             required
-          />
+            />
         </div>
 
         <div className="input-wrapper">
           <label htmlFor="category">Category</label>
-          <input
+          <select
             id="category"
-            type="text"
             value={formValues.category}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select Category</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="input-wrapper">
           <label>Pick Location Lost/Found</label>
-          <ItemLocationPicker onLocationChange={setLocation} />
+            <ItemLocationPicker onLocationChange={setLocation} />
           {error && <p className="error">{error}</p>}
         </div>
 
@@ -119,7 +136,7 @@ const NewItem = ({ user }) => {
           <input
             id="picture"
             type="url"
-    value={formValues.picture}
+            value={formValues.picture}
             onChange={handleChange}
             required
           />

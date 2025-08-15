@@ -299,7 +299,7 @@ input:focus, select:focus, textarea:focus {
 .navbar h6,
 .navbar a {
   color: white !important;
-  font-weight: 700 !important;
+  font-weight: 500 !important;
   text-decoration: none;
 }
 
@@ -588,14 +588,14 @@ input:focus, select:focus, textarea:focus {
 }
 
 .landing-container h1 {
-  font-size: 3.8rem;
+  font-size: 1.5rem;
   margin-bottom: 0.25em;
   font-weight: 700;
   letter-spacing: 1.1px;
 }
 
 .landing-container h2 {
-  font-size: 1.7rem;
+  font-size: 1.1rem;
   margin-bottom: 1.5em;
   font-weight: 400;
   font-style: italic;
@@ -604,7 +604,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .landing-container p {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   margin-bottom: 3em;
   max-width: 620px;

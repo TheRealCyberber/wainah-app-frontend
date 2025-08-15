@@ -28,7 +28,7 @@ const Home = ({ user }) => {
     <div className="home">
       <div className="welcome-box">
         <h1>Home</h1>
-        <p>Here you can see all lost & found items posted</p>
+        <p>Here you can see all lost & found items posted by everyone.</p>
         {!user ? (
           <p>
             <Link to="/signin" className="link">Sign in</Link> or{' '}

@@ -7,6 +7,17 @@ const EditItem = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
+  const categories = [
+    'Electronics',
+    'Clothing',
+    'Bags',
+    'Keys',
+    'Documents',
+    'Jewelry',
+    'Pets',
+    'Other'
+  ]
+
   const [formValues, setFormValues] = useState(null)
 
   const [location, setLocation] = useState(null)
@@ -94,12 +105,19 @@ const handleChange = (e) => {
 
         <div className="input-wrapper">
           <label htmlFor="category">Category</label>
-          <input
+          <select
             id="category"
             value={formValues.category}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select Category</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="input-wrapper">

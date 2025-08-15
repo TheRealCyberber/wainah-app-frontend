@@ -76,7 +76,7 @@ const Dashboard = ({ user }) => {
     <div className="dashboard">
       <div className="welcome-container">
         <h1>Dashboard</h1>
-    <p>Welcome back, {user.name}.</p>
+    <p>Hey, {user.name}. Here you can see all posts submitted by you.</p>
         <button className="btn primary" onClick={handleNewItem}>
           Report Lost/Found Item
         </button>
