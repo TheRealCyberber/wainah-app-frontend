@@ -9,13 +9,18 @@ const NavBar = ({ user, setUser }) => {
     localStorage.removeItem('token')
     setUser(null)
     navigate('/')
+    setMenuOpen(false)
+  }
+
+  const closeMenu = () => {
+    setMenuOpen(false)
   }
 
   return (
     <>
       <nav className="navbar">
         <div className="nav-left">
-          <Link to="/home" className="nav-logo">
+          <Link to="/home" className="nav-logo" onClick={closeMenu}>
             <img
               className="logo"
               src="https://i.imgur.com/2Z9ismj.png"
@@ -26,21 +31,21 @@ const NavBar = ({ user, setUser }) => {
 
         {/* Nav links */}
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          <Link to="/home">Home</Link>
-          <Link to="/aboutus">About us</Link>
-          <Link to="/contactus">Contact us</Link>
+          <Link to="/home" onClick={closeMenu}>Home</Link>
+          <Link to="/aboutus" onClick={closeMenu}>About us</Link>
+          <Link to="/contactus" onClick={closeMenu}>Contact us</Link>
 
           {user && (
             <>
-              <Link to="/dashboard">Dashboard</Link>
-              <Link to="/new-item">Add Item</Link>
+              <Link to="/dashboard" onClick={closeMenu}>Dashboard</Link>
+              <Link to="/new-item" onClick={closeMenu}>Add Item</Link>
             </>
           )}
 
           {!user && (
             <>
-              <Link to="/register">Register</Link>
-              <Link to="/signin">Sign In</Link>
+              <Link to="/register" onClick={closeMenu}>Register</Link>
+              <Link to="/signin" onClick={closeMenu}>Sign In</Link>
             </>
           )}
 
@@ -54,7 +59,6 @@ const NavBar = ({ user, setUser }) => {
           )}
         </div>
 
-        {/* Mobile toggle button */}
         <button
           className="menu-toggle"
           onClick={() => setMenuOpen(!menuOpen)}
