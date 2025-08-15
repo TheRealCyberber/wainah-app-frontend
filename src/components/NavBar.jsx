@@ -12,51 +12,57 @@ const NavBar = ({ user, setUser }) => {
   }
 
   return (
-    <nav className="navbar">
-      <div className="nav-left">
-      <Link to="/home" className="nav-logo">
-          <img
-            className="logo"
-            src="https://i.imgur.com/2Z9ismj.png"
-            alt="logo"
-          />
-        </Link>
-      </div>
+    <>
+      <nav className="navbar">
+        <div className="nav-left">
+          <Link to="/home" className="nav-logo">
+            <img
+              className="logo"
+              src="https://i.imgur.com/2Z9ismj.png"
+              alt="logo"
+            />
+          </Link>
+        </div>
 
-      <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/home">Home</Link>
-        <Link to="/aboutus">About us</Link>
-        <Link to="/contactus">Contact us</Link>
+        {/* Nav links */}
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <Link to="/home">Home</Link>
+          <Link to="/aboutus">About us</Link>
+          <Link to="/contactus">Contact us</Link>
 
+          {user && (
+            <>
+              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/new-item">Add Item</Link>
+            </>
+          )}
 
-        {user && (
-          <>
-            <Link to="/dashboard">Dashboard</Link>
-            <Link to="/new-item">Add Item</Link>
-          </>
-        )}
+          {!user && (
+            <>
+              <Link to="/register">Register</Link>
+              <Link to="/signin">Sign In</Link>
+            </>
+          )}
 
-        {!user && (
-          <>
-            <Link to="/register">Register</Link>
-            <Link to="/signin">Sign In</Link>
-          </>
-        )}
+          {user && (
+            <>
+              <span className="greeting">Hi, {user.name}</span>
+              <button onClick={handleSignOut} className="signout-btn">
+                Sign Out
+              </button>
+            </>
+          )}
+        </div>
 
-        {user && (
-          <>
-            <span className="greeting">Hi, {user.name}</span>
-            <button onClick={handleSignOut} className="signout-btn">
-              Sign Out
-            </button>
-          </>
-        )}
-      </div>
-
-      <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-        ☰
-      </button>
-    </nav>
+        {/* Mobile toggle button */}
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
+      </nav>
+    </>
   )
 }
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { GetItems } from '../services/item'
 import ItemCard from '../components/ItemCard'
+import Loading from '../components/Loading'
 
 const Home = ({ user }) => {
   const [items, setItems] = useState([])
@@ -40,7 +41,7 @@ const Home = ({ user }) => {
       </div>
 
       {loading ? (
-        <p>Loading items...</p>
+        <Loading />
       ) : items.length ? (
         <div className="item-list-container">
           <section className="lost-items">
