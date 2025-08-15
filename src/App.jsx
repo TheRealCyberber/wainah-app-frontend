@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import ClaimManagement from './pages/ClaimManagement'
 import Home from './pages/Home'
@@ -40,7 +40,7 @@ function App() {
   if (loading) return <p>Loading...</p>
 
   return (
-    <Router>
+    <>
       <NavBar user={user} setUser={setUser} /> 
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -58,7 +58,7 @@ function App() {
         <Route path="/claims/:claimId/edit" element={<EditClaimRequest />} />
         <Route path="/users/:userId" element={<UserProfile />} />
       </Routes>
-    </Router>
+    </>
   )
 }
 
